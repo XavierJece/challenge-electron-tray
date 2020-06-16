@@ -1,6 +1,7 @@
 const { resolve, basename } = require('path');
 const {
   app, Menu, Tray, dialog,
+// eslint-disable-next-line import/no-extraneous-dependencies
 } = require('electron');
 
 const { spawn } = require('child_process');
@@ -12,8 +13,7 @@ const Sentry = require('@sentry/electron');
 
 fixPath();
 
-Sentry.init({ dsn: 'https://18c9943a576d41248b195b5678f2724e@sentry.io/1506479' });
-
+Sentry.init({ dsn: 'https://6072a38bf15f4f689e35638eb7f02f15@o380254.ingest.sentry.io/5278840' });
 const schema = {
   projects: {
     type: 'string',
@@ -50,7 +50,14 @@ function render(tray = mainTray) {
     label: name,
     submenu: [
       {
-        label: locale.open,
+        label: locale.open_cmd,
+        click: () => {
+          console.log(path);
+          spawn('open', ['-a', 'Terminal', [path]], { shell: true, cwd: process.cwd(), stdio: 'inherit' });
+        },
+      },
+      {
+        label: locale.open_vs,
         click: () => {
           spawn('code', [path], { shell: true });
         },
