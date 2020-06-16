@@ -1,5 +1,6 @@
 {
-    "open": "Open with VSCode",
+    "open_vs": "Open with VSCode",
+    "open_cmd": "Open with CMD",
     "add": "Add new project folder...",
     "close": "Quit",
     "remove": "Remove"
